@@ -35,7 +35,7 @@
       <a href="https://github.com/Jacketring" target="_blank">
         <i class="fab fa-github"></i>
       </a>
-      <a href="docs/Curriculum_Jose_Hurtado_FINAL.html" download>
+      <a href="Curriculum_Jose_Hurtado_FINAL.html" download>
         <i class="fas fa-file-download"></i>
       </a>
     </div>
@@ -124,7 +124,6 @@
  
   <section id="proyectos" class="proyectos aparece-magico">
     <h2>Proyectos Personales</h2>
-  
     <div class="tarjetas-proyecto">
       <div class="proyecto-card" onclick="mostrarPopup('popup-factufast')">
         <h3>FactuFast</h3>
@@ -135,7 +134,7 @@
         <p>WooCommerce hecho con Angular 19, Bootstrap y SQL.</p>
       </div>
     </div>
-  
+
     <!-- Popup FactuFast -->
     <div id="popup-factufast" class="popup oculto">
       <div class="popup-contenido">
@@ -144,7 +143,7 @@
         <p>Aplicación de escritorio para la gestión de pequeñas empresas. Desarrollada completamente en C# como parte del TFG en DAM, con base de datos SQL para el control de clientes, facturación y productos.</p>
       </div>
     </div>
-  
+
     <!-- Popup TheZone -->
     <div id="popup-thezone" class="popup oculto">
       <div class="popup-contenido">
@@ -154,7 +153,37 @@
       </div>
     </div>
   </section>
-  <!-- JS general -->
+
+  <!-- Sección Contacto -->
+  <section id="contacto" class="contacto">
+    <h2>Contacto</h2>
+    <form id="formularioContacto">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Correo:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <!-- Popup de Éxito -->
+  <div id="popupExito" class="popup oculto">
+    <div class="popup-contenido">
+      <span class="cerrar" onclick="cerrarPopupExito()">&times;</span>
+      <h3>¡Mensaje enviado correctamente!</h3>
+      <p>Gracias por ponerte en contacto. Te responderé lo antes posible.</p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
   <script>
     fetch('navbar.html')
       .then(res => res.text())
@@ -163,75 +192,42 @@
       });
   </script>
   <script src="script.js"></script>
-</body>
-</html><!-- === SECCION CONTACTO === -->
-<section id="contacto" class="contacto">
-  <h2>Contacto</h2>
-  <form id="formularioContacto">
-    <div class="form-group">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="name" required>
-    </div>
+  <script>
+    const form = document.getElementById('formularioContacto');
+    const popup = document.getElementById('popupExito');
 
-    <div class="form-group">
-      <label for="email">Correo:</label>
-      <input type="email" id="email" name="email" required>
-    </div>
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const data = new FormData(form);
 
-    <div class="form-group">
-      <label for="mensaje">Mensaje:</label>
-      <textarea id="mensaje" name="message" rows="5" required></textarea>
-    </div>
-
-    <button type="submit">Enviar</button>
-  </form>
-</section>
-
-<!-- === POPUP DE EXITO === -->
-<div id="popupExito" class="popup oculto">
-  <div class="popup-contenido">
-    <span class="cerrar" onclick="cerrarPopupExito()">&times;</span>
-    <h3>¡Mensaje enviado correctamente!</h3>
-    <p>Gracias por ponerte en contacto. Te responderé lo antes posible.</p>
-  </div>
-</div>
-
-<!-- === SCRIPT PARA ENVIO Y POPUP === -->
-<script>
-  const form = document.getElementById('formularioContacto');
-  const popup = document.getElementById('popupExito');
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const data = new FormData(form);
-
-    fetch("https://formsubmit.co/ajax/josehur2003@gmail.com", {
-      method: "POST",
-      body: data
-    })
-    .then(response => {
-      if (response.ok) {
-        mostrarPopupExito();
-        form.reset();
-      } else {
-        alert("❌ Hubo un error al enviar el formulario.");
-      }
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      alert("❌ No se pudo enviar el mensaje.");
+      fetch("https://formsubmit.co/ajax/josehur2003@gmail.com", {
+        method: "POST",
+        body: data
+      })
+      .then(response => {
+        if (response.ok) {
+          mostrarPopupExito();
+          form.reset();
+        } else {
+          alert("❌ Hubo un error al enviar el formulario.");
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("❌ No se pudo enviar el mensaje.");
+      });
     });
-  });
 
-  function mostrarPopupExito() {
-    popup.classList.remove("oculto");
-    document.body.style.overflow = "hidden";
-    setTimeout(() => cerrarPopupExito(), 5000);
-  }
+    function mostrarPopupExito() {
+      popup.classList.remove("oculto");
+      document.body.style.overflow = "hidden";
+      setTimeout(() => cerrarPopupExito(), 5000);
+    }
 
-  function cerrarPopupExito() {
-    popup.classList.add("oculto");
-    document.body.style.overflow = "auto";
-  }
-</script>
+    function cerrarPopupExito() {
+      popup.classList.add("oculto");
+      document.body.style.overflow = "auto";
+    }
+  </script>
+</body>
+</html>
