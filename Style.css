@@ -1,0 +1,606 @@
+/* === GLOBAL === */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f111a;
+  color: #f0f0f0;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* === FONDO MATRIX === */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+/* === NAVBAR === */
+.navbar {
+  background-color: #121212;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #00ff88;
+}
+
+/* === HERO === */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem;
+  text-align: center;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.foto-perfil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 4px solid transparent;
+}
+
+.foto-perfil img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.borde-neon {
+  border-color: #00ffcc;
+  animation: borde-neon 1s infinite;
+  box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+}
+
+@keyframes borde-neon {
+  0%, 100% {
+      box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+  }
+  50% {
+      box-shadow: 0 0 2px #00ffcc, 0 0 5px #00ffcc;
+  }
+}
+
+#nombre {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  border-right: 2px solid #00ff88;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.neon-fx {
+  color: #00ffcc;
+  text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+  animation: parpadeo 1s infinite;
+}
+
+@keyframes parpadeo {
+  0%, 100% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.5;
+  }
+}
+
+.disponible {
+  border: 2px solid #00ff88;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: #00ff88;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.descripcion {
+  max-width: 600px;
+  margin: 1rem auto;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* === SKILLS === */
+.skills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+  z-index: 1;
+  position: relative;
+}
+
+.skills img {
+  width: 50px;
+  height: 50px;
+  transition: transform 1.5s ease-in-out;
+}
+
+.skills img:hover {
+  animation: respirar 2s infinite ease-in-out;
+}
+
+@keyframes respirar {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.15);
+  }
+}
+
+/* === REDES === */
+.redes {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.redes a {
+  color: #f0f0f0;
+  transition: color 0.3s;
+}
+
+.redes a:hover {
+  color: #0077b5;
+}
+
+.redes a:nth-child(2):hover {
+  color: #333;
+}
+
+.redes a:nth-child(3):hover {
+  color: #00c853;
+}
+
+/* === TRAYECTORIA === */
+.trayectoria {
+  background: linear-gradient(180deg, #0f111a, #0c1c2c);
+  padding: 6rem 2rem 8rem 2rem;
+  color: #f0f0f0;
+}
+
+.trayectoria h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #00ffcc;
+  margin-left: 2rem;
+  margin-bottom: 3rem;
+  text-align: left;
+  position: relative;
+}
+
+.trayectoria h2::before {
+  content: '✦';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.2rem;
+  font-size: 2rem;
+  color: #00ff88;
+  animation: brillar 2s infinite;
+}
+
+@keyframes brillar {
+  0%, 100% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.3;
+  }
+}
+
+.tabs-trayectoria {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.tabs-trayectoria button {
+  background-color: transparent;
+  border: 2px solid #00ff88;
+  color: #00ff88;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tabs-trayectoria button:hover {
+  background-color: rgba(0, 255, 136, 0.1);
+}
+
+.tab-activa {
+  background-color: #00ff88;
+  color: #0f111a;
+  box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+  position: relative;
+}
+
+.tab-activa::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  background-color: #00ff88;
+  border-radius: 2px;
+  animation: indicador 0.4s ease-out;
+}
+
+@keyframes indicador {
+  from {
+      width: 0%;
+      opacity: 0;
+  }
+  to {
+      width: 50%;
+      opacity: 1;
+  }
+}
+
+.trayectoria-tab {
+  display: block;
+}
+
+.trayectoria-tab.oculto {
+  display: none;
+}
+
+.estudios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.estudio-card {
+  background-color: #1b2a41;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s;
+}
+
+.estudio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+/* === POPUP === */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-contenido {
+  background-color: #1e2e42;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  color: #f0f0f0;
+}
+
+.popup-contenido h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.popup-contenido p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.cerrar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #00ffcc;
+}
+
+.oculto {
+  display: none;
+}
+
+.aparece-magico {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.aparece-magico.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Logo dentro del popup */
+.popup-contenido .logo-empresa {
+  width: 120px;
+  height: auto;
+  margin: 0 auto 1rem;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px #00ffcc);
+  animation: flotarLogo 3s ease-in-out infinite;
+}
+
+@keyframes flotarLogo {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-5px);
+  }
+}
+
+/* Flex horizontal para el contenido del popup */
+.contenido-flex {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Logo circular a la izquierda */
+.logo-empresa-circular {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 10px #00ffcc;
+  flex-shrink: 0;
+}
+
+/* Contenido textual al lado del logo */
+.popup-texto {
+  flex: 1;
+}
+
+.popup-texto h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+}
+
+.popup-texto p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* === PROYECTOS === */
+.proyectos {
+  background: linear-gradient(180deg, #0c1c2c, #0f111a);
+  padding: 6rem 2rem 8rem 2rem;
+  color: #f0f0f0;
+  text-align: center;
+}
+
+.proyectos h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #00ffcc;
+  margin-left: 2rem;
+  margin-bottom: 3rem;
+  text-align: left;
+  position: relative;
+}
+
+.proyectos h2::before {
+  content: '★';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.2rem;
+  font-size: 2rem;
+  color: #00ff88;
+  animation: brillar 2s infinite;
+}
+
+.tarjetas-proyecto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.proyecto-card {
+  background-color: #1b2a41;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.proyecto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}/* === CONTACTO === */
+.contacto {
+  background: linear-gradient(180deg, #0f111a, #0c1c2c);
+  padding: 6rem 2rem 10rem 2rem;
+  color: #f0f0f0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.contacto h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #00ffcc;
+  margin-left: 2rem;
+  margin-bottom: 3rem;
+  text-align: left;
+  position: relative;
+}
+
+.contacto h2::before {
+  content: '✉';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.2rem;
+  font-size: 2rem;
+  color: #00ff88;
+  animation: brillar 2s infinite;
+}
+
+@keyframes brillar {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+#formularioContacto {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #121c2f;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #00ffcc;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  background-color: #1e2e42;
+  color: #f0f0f0;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #bbb;
+}
+
+#formularioContacto button {
+  background-color: #00ff88;
+  color: #0f111a;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+#formularioContacto button:hover {
+  background-color: #00e676;
+}
+
+/* === POPUP DE ÉXITO === */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.popup-contenido {
+  background-color: #1e2e42;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  color: #00ff88;
+  font-size: 1.2rem;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+  position: relative;
+  max-width: 90%;
+}
+
+.popup .cerrar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #00ffcc;
+}
+
+.oculto {
+  display: none;
+}
